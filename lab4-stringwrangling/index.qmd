@@ -138,37 +138,12 @@ df |>
 ## Exercise 1: Reading TSV Files
 
 * A TSV file, `places_in_princeton.tsv`, uses a tab character as a delimiter between values. Your task is to read this file into R using an appropriate reading function.
+
+```{r}
+# Reading a CSV file using read.csv from base R
+data_base_r <- read.csv("places_in_princeton.tsv", sep = "\t")
+
+# Inspecting the first few rows of the data
+head(data_base_r)
+```
     
-## Exercise 2. Regex to English
-
-* Explain what this regex patters does: "\\d+[-]\\d+[-]\\d+\\s" in words. What is an example of something it matches? Leave your response as a comment block in your working script or file.
-
-## Exercise 3: Extracting the parts of an address
-
-With the address column from the data from Exercise 1, we can extract ZIP codes as follows:
-
-```{r, eval = FALSE}
-# in R
-zip_codes <- str_extract(data_tsv$address, "\\b\\d{5}(?:-\\d{4})?\\b")
-```
-
-* Now, extract the street address from the address string and search each comment for the word "Famous" to determine which locations are famous in Princeton. Follow this up by searching for "historic." Make sure that your search is case-insensitive and captures when historic is a substring as well, like in "historical".
-
-## Exercise 4: More string extraction
-
-* Identify locations with a number in their names and extract that number.
-* Extract all words starting with 'a' or 'A' from the comment column.
-
-## Exercise 5: Place names
-
-* Which Princeton place name has the most vowels? What name has the highest proportion of vowels? (Hint: what is the denominator?)
-
-## Exercise 6: Extracting month, day, year from a date variable
-
-Create a dataframe called `flights` from `nycflights.csv` and create the following variable `date_strings`:
-
-```{r, eval = FALSE}
-date_strings <- paste(flights$year, flights$month, flights$day, sep = "-")
-```
-
-* Extract the months, days, and years from your new variable into three separate variables for each date component
